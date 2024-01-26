@@ -29,7 +29,7 @@ class User extends Authenticatable
         'adresse',
         'deplome',
         'validerEntretien',
-        // 'roleId',
+        'roleId',
         // 'roleName',
 
     ];

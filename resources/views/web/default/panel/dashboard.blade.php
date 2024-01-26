@@ -69,33 +69,9 @@
 
     <section class="dashboard">
         <div class="row">
-            <div class="col-12 col-lg-3 mt-35">
-                <div class="bg-white account-balance rounded-sm panel-shadow py-15 py-md-30 px-10 px-md-20">
-                    <div class="text-center">
-                        <img src="/assets/default/img/activity/36.svg" class="account-balance-icon" alt="">
 
-                        <h3 class="font-16 font-weight-500 text-gray mt-25">{{ trans('panel.account_balance') }}</h3>
-                        <span class="mt-5 d-block font-30 text-secondary">{{ $currency }}{{ $authUser->getAccountingBalance() }}</span>
-                    </div>
 
-                    @php
-                        $getFinancialSettings = getFinancialSettings();
-                        $drawable = $authUser->getPayout();
-                        $can_drawable = ($drawable > ((!empty($getFinancialSettings) and !empty($getFinancialSettings['minimum_payout'])) ? (int)$getFinancialSettings['minimum_payout'] : 0))
-                    @endphp
-
-                    <div class="mt-20 pt-30 border-top border-gray300 d-flex align-items-center @if($can_drawable) justify-content-between @else justify-content-center @endif">
-                        @if($can_drawable)
-                            <span class="font-16 font-weight-500 text-gray">{{ trans('panel.with_drawable') }}:</span>
-                            <span class="font-16 font-weight-bold text-secondary">{{ $currency }}{{ $drawable }}</span>
-                        @else
-                            <a href="/panel/financial/account" class="font-16 font-weight-bold text-dark-blue">{{ trans('financial.charge_account') }}</a>
-                        @endif
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-3 mt-35">
+            <div class="col-12 col-lg-6 mt-35">
                 <a href="@if($authUser->isUser()) /panel/webinars/purchases @else /panel/webinars @endif" class="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center">
                     <div class="stat-icon requests">
                         <img src="/assets/default/img/icons/request.svg" alt="">
@@ -117,7 +93,7 @@
                 </a>
             </div>
 
-            <div class="col-12 col-lg-3 mt-35">
+            <div class="col-12 col-lg-6 mt-35">
                 <a href="/panel/support" class="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center">
                     <div class="stat-icon support-messages">
                         <img src="/assets/default/img/icons/support.svg" alt="">
@@ -139,60 +115,9 @@
                 </a>
             </div>
 
-            <div class="col-12 col-lg-3 mt-35">
-                <div class="bg-white account-balance rounded-sm panel-shadow py-15 py-md-15 px-10 px-md-20">
-                    <div data-percent="{{ !empty($nextBadge) ? $nextBadge['percent'] : 0 }}" data-label="{{ (!empty($nextBadge) and !empty($nextBadge['earned'])) ? $nextBadge['earned']->title : '' }}" id="nextBadgeChart" class="text-center">
-                    </div>
-                    <div class="mt-10 pt-10 border-top border-gray300 d-flex align-items-center justify-content-between">
-                        <span class="font-16 font-weight-500 text-gray">{{ trans('panel.next_badge') }}:</span>
-                        <span class="font-16 font-weight-bold text-secondary">{{ (!empty($nextBadge) and !empty($nextBadge['badge'])) ? $nextBadge['badge']->title : trans('public.not_defined') }}</span>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
-        <div class="row">
-            <div class="col-12 col-lg-6 mt-35">
-                <div class="bg-white noticeboard rounded-sm panel-shadow py-10 py-md-20 px-15 px-md-30">
-                    <h3 class="font-16 text-dark-blue font-weight-bold">{{ trans('panel.noticeboard') }}</h3>
-
-                    @foreach($authUser->getUnreadNoticeboards() as $getUnreadNoticeboard)
-                        <div class="noticeboard-item py-15">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <h4 class="js-noticeboard-title font-weight-500 text-secondary">{!! truncate($getUnreadNoticeboard->title,150) !!}</h4>
-                                    <div class="font-12 text-gray mt-5">
-                                        <span class="mr-5">{{ trans('public.created_by') }} {{ $getUnreadNoticeboard->sender }}</span>
-                                        |
-                                        <span class="js-noticeboard-time ml-5">{{ dateTimeFormat($getUnreadNoticeboard->created_at,'Y M j | H:i') }}</span>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <button type="button" data-id="{{ $getUnreadNoticeboard->id }}" class="js-noticeboard-info btn btn-sm btn-border-white">{{ trans('panel.more_info') }}</button>
-                                    <input type="hidden" class="js-noticeboard-message" value="{{ $getUnreadNoticeboard->message }}">
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6 mt-35">
-                <div class="bg-white monthly-sales-card rounded-sm panel-shadow py-10 py-md-20 px-15 px-md-30">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h3 class="font-16 text-dark-blue font-weight-bold">{{ ($authUser->isUser()) ? trans('panel.learning_statistics') : trans('panel.monthly_sales') }}</h3>
-
-                        <span class="font-16 font-weight-500 text-gray">{{ dateTimeFormat(time(),'M Y') }}</span>
-                    </div>
-
-                    <div class="monthly-sales-chart">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
 

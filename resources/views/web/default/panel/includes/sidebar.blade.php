@@ -221,67 +221,6 @@
             </div>
         </li>
 
-        <li class="sidenav-item {{ (request()->is('panel/certificates') or request()->is('panel/certificates/*')) ? 'sidenav-item-active' : '' }}">
-            <a class="d-flex align-items-center" data-toggle="collapse" href="#certificatesCollapse" role="button" aria-expanded="false" aria-controls="certificatesCollapse">
-                <span class="sidenav-item-icon mr-10">
-                    @include('web.default.panel.includes.sidebar_icons.certificate')
-                </span>
-                <span class="font-14 text-dark-blue font-weight-500">{{ trans('panel.certificates') }}</span>
-            </a>
-
-            <div class="collapse {{ (request()->is('panel/certificates') or request()->is('panel/certificates/*')) ? 'show' : '' }}" id="certificatesCollapse">
-                <ul class="sidenav-item-collapse">
-                    @if($authUser->isOrganization() || $authUser->isTeacher())
-                        <li class="mt-5 {{ (request()->is('panel/certificates')) ? 'active' : '' }}">
-                            <a href="/panel/certificates">{{ trans('public.list') }}</a>
-                        </li>
-                    @endif
-
-                    <li class="mt-5 {{ (request()->is('panel/certificates/achievements')) ? 'active' : '' }}">
-                        <a href="/panel/certificates/achievements">{{ trans('quiz.achievements') }}</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
-        <li class="sidenav-item {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'sidenav-item-active' : '' }}">
-            <a class="d-flex align-items-center" data-toggle="collapse" href="#financialCollapse" role="button" aria-expanded="false" aria-controls="financialCollapse">
-                <span class="sidenav-item-icon mr-10">
-                    @include('web.default.panel.includes.sidebar_icons.financial')
-                </span>
-                <span class="font-14 text-dark-blue font-weight-500">{{ trans('panel.financial') }}</span>
-            </a>
-
-            <div class="collapse {{ (request()->is('panel/financial') or request()->is('panel/financial/*')) ? 'show' : '' }}" id="financialCollapse">
-                <ul class="sidenav-item-collapse">
-
-                    @if($authUser->isOrganization() || $authUser->isTeacher())
-                        <li class="mt-5 {{ (request()->is('panel/financial/sales')) ? 'active' : '' }}">
-                            <a href="/panel/financial/sales">{{ trans('financial.sales_report') }}</a>
-                        </li>
-                    @endif
-
-                    <li class="mt-5 {{ (request()->is('panel/financial/summary')) ? 'active' : '' }}">
-                        <a href="/panel/financial/summary">{{ trans('financial.financial_summary') }}</a>
-                    </li>
-
-                    @if($authUser->isOrganization() || $authUser->isTeacher())
-                        <li class="mt-5 {{ (request()->is('panel/financial/payout')) ? 'active' : '' }}">
-                            <a href="/panel/financial/payout">{{ trans('financial.payout') }}</a>
-                        </li>
-                    @endif
-
-                    <li class="mt-5 {{ (request()->is('panel/financial/account')) ? 'active' : '' }}">
-                        <a href="/panel/financial/account">{{ trans('financial.charge_account') }}</a>
-                    </li>
-
-                    <li class="mt-5 {{ (request()->is('panel/financial/subscribes')) ? 'active' : '' }}">
-                        <a href="/panel/financial/subscribes">{{ trans('financial.subscribes') }}</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-
         <li class="sidenav-item {{ (request()->is('panel/support') or request()->is('panel/support/*')) ? 'sidenav-item-active' : '' }}">
             <a class="d-flex align-items-center" data-toggle="collapse" href="#supportCollapse" role="button" aria-expanded="false" aria-controls="supportCollapse">
                 <span class="sidenav-item-icon mr-10">

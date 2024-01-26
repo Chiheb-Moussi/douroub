@@ -101,7 +101,7 @@ class RegisterController extends Controller
 
         $user = User::create([
             'role_name' => Role::$user,
-            'role_id' => 1,//normal user
+            'role_id' => $data ['role_id'],//normal user
             $username => $data[$username],
             'full_name' => $data['full_name'],
             'status' => User::$pending,

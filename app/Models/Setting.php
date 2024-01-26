@@ -60,9 +60,9 @@ class Setting extends Model
         }
 
         $value = [];
-
-        if (!empty($static) and isset($static->value)) {
-            $value = json_decode($static->value, true);
+        $settingTranslation = SettingTranslation::where('setting_id', $static->id)->first();
+        if (!empty($settingTranslation) and isset($settingTranslation->value)) {
+            $value = json_decode($settingTranslation->value, true);
         }
 
         if (!empty($value) and !empty($key)) {

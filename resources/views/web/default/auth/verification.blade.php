@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row login-container">
             <div class="col-12 col-md-6 pl-0">
-                <img src="{{ getPageBackgroundSettings('verification') }}" class="img-cover" alt="Login">
+                <img src="/store/1/default_images/verification.jpg" class="img-cover" alt="Login">
             </div>
 
             <div class="col-12 col-md-6">

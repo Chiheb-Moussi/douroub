@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row login-container">
             <div class="col-12 col-md-6 pl-0">
-                <img src="{{ getPageBackgroundSettings('register') }}" class="img-cover" alt="Login">
+                <img src="/store/1/default_images/front_register.jpg" class="img-cover" alt="Login">
             </div>
             <div class="col-12 col-md-6">
                 <div class="login-card">
@@ -60,6 +60,25 @@
                                 </div>
                             </div>
                         @else
+                            <div class="form-group">
+                                <label class="input-label">Account type</label>
+
+                                <div class="d-flex align-items-center wizard-custom-radio mt-5">
+                                    <div class="wizard-custom-radio-item flex-grow-1">
+                                        <input type="radio" name="role_id" value="1" id="role_user" class="" checked="">
+                                        <label class="font-12 cursor-pointer px-15 py-10" for="role_user">Student</label>
+                                    </div>
+
+                                    <div class="wizard-custom-radio-item flex-grow-1">
+                                        <input type="radio" name="role_id" value="4" id="role_teacher" class="">
+                                        <label class="font-12 cursor-pointer px-15 py-10" for="role_teacher">Instructor</label>
+                                    </div>
+                                    <div class="wizard-custom-radio-item flex-grow-1">
+                                        <input type="radio" name="role_id" value="3" id="role_organization" class="">
+                                        <label class="font-12 cursor-pointer px-15 py-10" for="role_organization">Organization</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="input-label" for="email">{{ trans('auth.'.$registerMethod) }}:</label>
                                 <input name="email" type="text" class="form-control @error('email') is-invalid @enderror"

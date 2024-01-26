@@ -7,16 +7,16 @@
 
 <div id="navbarVacuum"></div>
 
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light" style="height: 110px">
     <div class="{{ (!empty($isPanel) and $isPanel) ? 'container-fluid' : 'container'}}">
         <div class="d-flex align-items-center justify-content-between w-100">
 
             <a class="navbar-brand navbar-order mr-0" href="/">
-              
-                    <img style="width: 132px;
-    height: 39px;
-    margin-left: 1px;" src="/abajim.png" class="img-cover" alt="site logo">
-           
+
+                    <img style="width: 99px;
+                    height: 103px;
+                    margin-top: -32px;" src="/douroub.png" class="img-cover" alt="site logo">
+
             </a>
             @if (!empty($authUser))
             <button class="navbar-toggler navbar-order" type="button" id="navbarToggle">
@@ -70,7 +70,7 @@
                         </li>
                     @endif
 
-              
+
                             <li class="nav-item">
                             <a class="nav-link" href="/panel">Home</a>
                             </li>
@@ -83,7 +83,7 @@
                             <li class="nav-item">
                             <a class="nav-link" href="/panel/quizzes">Quizzes</a>
                             </li>
-                           
+
                 </ul>
             </div>
 
@@ -98,11 +98,11 @@
                 </a>
 
                 <div class="d-none nav-notify-cart-dropdown top-navbar ">
-                   
+
 
                     <div class="border-left mx-15"></div>
 
-                    
+
                 </div>
 
             </div>
