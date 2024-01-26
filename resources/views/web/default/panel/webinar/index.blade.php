@@ -26,21 +26,21 @@
                     </div>
                 </div>
 
-                <div class="col-6 col-md-3 mt-30 mt-md-0 d-flex align-items-center justify-content-center mt-5 mt-md-0">
-                    <div class="d-flex flex-column align-items-center text-center">
-                        <img src="/assets/default/img/activity/sales.svg" width="64" height="64" alt="">
-                        <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ $currency }}{{ $webinarSalesAmount }}</strong>
-                        <span class="font-16 text-gray font-weight-500">{{ trans('cart.total') .' '. trans('panel.webinar_sales') }}</span>
-                    </div>
-                </div>
+{{--                <div class="col-6 col-md-3 mt-30 mt-md-0 d-flex align-items-center justify-content-center mt-5 mt-md-0">--}}
+{{--                    <div class="d-flex flex-column align-items-center text-center">--}}
+{{--                        <img src="/assets/default/img/activity/sales.svg" width="64" height="64" alt="">--}}
+{{--                        <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ $currency }}{{ $webinarSalesAmount }}</strong>--}}
+{{--                        <span class="font-16 text-gray font-weight-500">{{ trans('cart.total') .' '. trans('panel.webinar_sales') }}</span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="col-6 col-md-3 mt-30 mt-md-0 d-flex align-items-center justify-content-center mt-5 mt-md-0">
-                    <div class="d-flex flex-column align-items-center text-center">
-                        <img src="/assets/default/img/activity/download-sales.svg" width="64" height="64" alt="">
-                        <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ $currency }}{{ $courseSalesAmount }}</strong>
-                        <span class="font-16 text-gray font-weight-500">{{ trans('cart.total') .' '.trans('panel.course_sales') }}</span>
-                    </div>
-                </div>
+{{--                <div class="col-6 col-md-3 mt-30 mt-md-0 d-flex align-items-center justify-content-center mt-5 mt-md-0">--}}
+{{--                    <div class="d-flex flex-column align-items-center text-center">--}}
+{{--                        <img src="/assets/default/img/activity/download-sales.svg" width="64" height="64" alt="">--}}
+{{--                        <strong class="font-30 text-dark-blue font-weight-bold mt-5">{{ $currency }}{{ $courseSalesAmount }}</strong>--}}
+{{--                        <span class="font-16 text-gray font-weight-500">{{ trans('cart.total') .' '.trans('panel.course_sales') }}</span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>
@@ -156,18 +156,18 @@
 
                                 @include(getTemplate() . '.includes.webinar.rate',['rate' => $webinar->getRate()])
 
-                                <div class="webinar-price-box mt-15">
-                                    @if($webinar->price > 0)
-                                        @if($webinar->bestTicket() < $webinar->price)
-                                            <span class="real">{{ $currency }}{{ number_format($webinar->bestTicket(),2) }}</span>
-                                            <span class="off ml-10">{{ $currency }}{{ number_format($webinar->price,2) }}</span>
-                                        @else
-                                            <span class="real">{{ $currency }}{{ number_format($webinar->price,2) }}</span>
-                                        @endif
-                                    @else
-                                        <span class="real">{{ trans('public.free') }}</span>
-                                    @endif
-                                </div>
+{{--                                <div class="webinar-price-box mt-15">--}}
+{{--                                    @if($webinar->price > 0)--}}
+{{--                                        @if($webinar->bestTicket() < $webinar->price)--}}
+{{--                                            <span class="real">{{ $currency }}{{ number_format($webinar->bestTicket(),2) }}</span>--}}
+{{--                                            <span class="off ml-10">{{ $currency }}{{ number_format($webinar->price,2) }}</span>--}}
+{{--                                        @else--}}
+{{--                                            <span class="real">{{ $currency }}{{ number_format($webinar->price,2) }}</span>--}}
+{{--                                        @endif--}}
+{{--                                    @else--}}
+{{--                                        <span class="real">{{ trans('public.free') }}</span>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
 
                                 <div class="d-flex align-items-center justify-content-between flex-wrap mt-auto">
                                     <div class="d-flex align-items-start flex-column mt-20 mr-15">
@@ -227,10 +227,10 @@
                                         </div>
                                     @endif
 
-                                    <div class="d-flex align-items-start flex-column mt-20 mr-15">
-                                        <span class="stat-title">{{ trans('panel.sales') }}:</span>
-                                        <span class="stat-value">{{ count($webinar->sales) }} ({{ $currency }}{{ (!empty($webinar->sales) and count($webinar->sales)) ? $webinar->sales->sum('amount') : 0 }})</span>
-                                    </div>
+{{--                                    <div class="d-flex align-items-start flex-column mt-20 mr-15">--}}
+{{--                                        <span class="stat-title">{{ trans('panel.sales') }}:</span>--}}
+{{--                                        <span class="stat-value">{{ count($webinar->sales) }} ({{ $currency }}{{ (!empty($webinar->sales) and count($webinar->sales)) ? $webinar->sales->sum('amount') : 0 }})</span>--}}
+{{--                                    </div>--}}
 
                                     @if(!empty($webinar->partner_instructor) and $webinar->partner_instructor and $authUser->id != $webinar->teacher_id and $authUser->id != $webinar->creator_id)
                                         <div class="d-flex align-items-start flex-column mt-20 mr-15">

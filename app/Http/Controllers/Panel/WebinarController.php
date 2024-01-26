@@ -324,13 +324,13 @@ class WebinarController extends Controller
                 ->get();
 
             $data['categories'] = $categories;
+//        } elseif ($step == 3) {
+//            $query->with([
+//                'tickets' => function ($query) {
+//                    $query->orderBy('order', 'desc');
+//                },
+//            ]);
         } elseif ($step == 3) {
-            $query->with([
-                'tickets' => function ($query) {
-                    $query->orderBy('order', 'desc');
-                },
-            ]);
-        } elseif ($step == 4) {
             $query->with([
                 'files' => function ($query) {
                     $query->orderBy('order', 'asc');
@@ -342,7 +342,7 @@ class WebinarController extends Controller
                     }])->orderBy('order', 'asc');
                 },
             ]);
-        } elseif ($step == 5) {
+        } elseif ($step == 4) {
             $query->with([
                 'prerequisites' => function ($query) {
                     $query->with(['prerequisiteWebinar' => function ($qu) {
@@ -353,13 +353,13 @@ class WebinarController extends Controller
                     }])->orderBy('order', 'asc');
                 }
             ]);
-        } elseif ($step == 6) {
+        } elseif ($step == 5) {
             $query->with([
                 'faqs' => function ($query) {
                     $query->orderBy('order', 'asc');
                 }
             ]);
-        } elseif ($step == 7) {
+        } elseif ($step == 6) {
             $query->with(['quizzes']);
 
             $teacherQuizzes = Quiz::where('webinar_id', null)
@@ -384,9 +384,9 @@ class WebinarController extends Controller
             $data['webinarTags'] = $webinar->tags->pluck('title')->toArray();
         }
 
-        if ($step == 3) {
-            $data['sumTicketsCapacities'] = $webinar->tickets->sum('capacity');
-        }
+//        if ($step == 3) {
+//            $data['sumTicketsCapacities'] = $webinar->tickets->sum('capacity');
+//        }
 
 
         return view(getTemplate() . '.panel.webinar.create', $data);
@@ -440,7 +440,7 @@ class WebinarController extends Controller
         }
 
         $webinarRulesRequired = false;
-        if (($currentStep == 8 and !$getNextStep and !$isDraft) or (!$getNextStep and !$isDraft)) {
+        if (($currentStep == 7 and !$getNextStep and !$isDraft) or (!$getNextStep and !$isDraft)) {
             $webinarRulesRequired = empty($data['rules']);
         }
 
@@ -474,9 +474,9 @@ class WebinarController extends Controller
             }
         }
 
-        if ($currentStep == 3) {
-            $data['subscribe'] = !empty($data['subscribe']) ? true : false;
-        }
+//        if ($currentStep == 3) {
+//            $data['subscribe'] = !empty($data['subscribe']) ? true : false;
+//        }
 
         $filters = $request->get('filters', null);
         if (!empty($filters) and is_array($filters)) {
@@ -520,11 +520,11 @@ class WebinarController extends Controller
         if ($getNextStep) {
             $nextStep = (!empty($getStep) and $getStep > 0) ? $getStep : $currentStep + 1;
 
-            $url = '/panel/webinars/' . $webinar->id . '/step/' . (($nextStep <= 8) ? $nextStep : 8);
+            $url = '/panel/webinars/' . $webinar->id . '/step/' . (($nextStep <= 7) ? $nextStep : 7);
         }
 
         if ($webinarRulesRequired) {
-            $url = '/panel/webinars/' . $webinar->id . '/step/8';
+            $url = '/panel/webinars/' . $webinar->id . '/step/7';
 
             return redirect($url)->withErrors(['rules' => trans('validation.required', ['attribute' => 'rules'])]);
         }
